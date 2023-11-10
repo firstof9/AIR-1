@@ -1,13 +1,13 @@
 #Define Project
 substitutions:
   name: apollo-air-1
-  version:  "23.10251"
+  version:  "23.11.10.1"
   device_description: ${name} made by Apollo Automation - version ${version}.
   
 esphome:
   name: "${name}"
-  friendly_name: Apollo Air Mk1 (AIR-1)
-  comment: Apollo Air Mk1 (AIR-1)
+  friendly_name: Apollo AIR-1
+  comment: Apollo AIR-1
   name_add_mac_suffix: true
   platformio_options:
     board_build.flash_mode: dio
@@ -31,9 +31,9 @@ esp32:
   framework:
     type: arduino
   
-#dashboard_import:
-  #package_import_url: github://ApolloAutomation/AIR-1/Integrations/ESPHome/MSR-1.yaml
-  #import_full_config: false
+dashboard_import:
+  package_import_url: github://ApolloAutomation/AIR-1/Integrations/ESPHome/AIR-1.yaml
+  import_full_config: false
 
 
 globals:
@@ -108,16 +108,6 @@ number:
 
   
 
-# Buzzer
-output:
-  - platform: ledc
-    pin: GPIO10
-    id: buzzer
-rtttl:
- output: buzzer
-
-
-
 binary_sensor:
   - platform: status
     name: Online
@@ -167,12 +157,6 @@ sensor:
     co2:
       name: "CO2"
       id: "co2"
-    temperature:
-      name: SCD40 Temperature
-      id: scd40temperature
-    humidity:
-      name: SCD40 Humidity
-      id: scd40humidity
     automatic_self_calibration: false
     update_interval: 60s
     measurement_mode: "periodic"
@@ -180,9 +164,6 @@ sensor:
     ambient_pressure_compensation_source: dps310pressure
 
   - platform: dps310
-    temperature:
-      name: "DPS310 Temperature"
-      id: dps310temperature
     pressure:
       name: "DPS310 Pressure"
       id: dps310pressure
