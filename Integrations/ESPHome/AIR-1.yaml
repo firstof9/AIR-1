@@ -237,7 +237,7 @@ light:
     type: GRB
     variant: WS2812x
     pin: GPIO3
-    num_leds: 2
+    num_leds: 1
     name: "RGB Light"
     method:
       type: esp32_rmt
