@@ -61,19 +61,6 @@ ota:
   - platform: esphome
     password: "apolloautomation"
     id: ota_default
-  - platform: http_request
-    id: ota_managed
-
-http_request:
-  useragent: esphome/device
-  timeout: 10s
-  verify_ssl: false
-
-update:
-  - platform: http_request
-    id: firmware_update
-    name: Firmware Update
-    source: https://apolloautomation.github.io/AIR-1/artifact/manifest.json
 
 wifi:
   ap:
@@ -394,6 +381,3 @@ interval:
             - light.turn_off:
                 id: rgb_light
             - lambda: 'id(cycleCounter) += 1;'
-
-
-  
